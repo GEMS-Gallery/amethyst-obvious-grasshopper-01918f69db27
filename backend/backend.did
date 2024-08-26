@@ -1,0 +1,14 @@
+type Note = 
+ record {
+   content: text;
+   createdAt: int;
+   id: nat;
+   title: text;
+   updatedAt: int;
+ };
+service : {
+  addNote: (text, text) -> (nat);
+  deleteNote: (nat) -> (bool);
+  getNotes: () -> (vec Note) query;
+  updateNote: (nat, text, text) -> (bool);
+}
