@@ -7,10 +7,10 @@ export const idlFactory = ({ IDL }) => {
     'updatedAt' : IDL.Int,
   });
   return IDL.Service({
-    'addNote' : IDL.Func([IDL.Text, IDL.Text], [IDL.Nat], []),
-    'deleteNote' : IDL.Func([IDL.Nat], [IDL.Bool], []),
+    'addNote' : IDL.Func([IDL.Text, IDL.Text], [IDL.Text], []),
+    'deleteNote' : IDL.Func([IDL.Text], [IDL.Bool], []),
     'getNotes' : IDL.Func([], [IDL.Vec(Note)], ['query']),
-    'updateNote' : IDL.Func([IDL.Nat, IDL.Text, IDL.Text], [IDL.Bool], []),
+    'updateNote' : IDL.Func([IDL.Text, IDL.Text, IDL.Text], [IDL.Bool], []),
   });
 };
 export const init = ({ IDL }) => { return []; };

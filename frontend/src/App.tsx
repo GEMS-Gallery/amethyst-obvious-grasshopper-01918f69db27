@@ -11,7 +11,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import NoteModal from './components/NoteModal';
 
 type Note = {
-  id: bigint;
+  id: string;
   title: string;
   content: string;
   createdAt: bigint;
@@ -30,7 +30,7 @@ const App: React.FC = () => {
   const fetchNotes = async () => {
     try {
       const fetchedNotes = await backend.getNotes();
-      setNotes(fetchedNotes);
+      setNotes(fetchedNotes.map(note => ({ ...note, id: note.id.toString() })));
     } catch (error) {
       console.error('Error fetching notes:', error);
     }
@@ -46,7 +46,7 @@ const App: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const handleDeleteNote = async (id: bigint) => {
+  const handleDeleteNote = async (id: string) => {
     try {
       await backend.deleteNote(id);
       fetchNotes();
@@ -101,7 +101,7 @@ const App: React.FC = () => {
             </Button>
             <Grid container spacing={2}>
               {notes.map((note) => (
-                <Grid item xs={12} sm={6} md={4} key={Number(note.id)}>
+                <Grid item xs={12} sm={6} md={4} key={note.id}>
                   <Card>
                     <CardContent>
                       <Typography variant="h6" component="h2">

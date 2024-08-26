@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button } from '@mui/material';
 
 type Note = {
-  id: bigint;
+  id: string;
   title: string;
   content: string;
   createdAt: bigint;

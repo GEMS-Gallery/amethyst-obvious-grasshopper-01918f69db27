@@ -7,8 +7,8 @@ type Note =
    updatedAt: int;
  };
 service : {
-  addNote: (text, text) -> (nat);
-  deleteNote: (nat) -> (bool);
+  addNote: (text, text) -> (text);
+  deleteNote: (text) -> (bool);
   getNotes: () -> (vec Note) query;
-  updateNote: (nat, text, text) -> (bool);
+  updateNote: (text, text, text) -> (bool);
 }
